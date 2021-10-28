@@ -44,7 +44,7 @@
 		<!--- FONT-ICONS CSS -->
 		<link href="/assets/css/icons.css" rel="stylesheet"/>
 
-
+@yield('customCss')
 		<!-- COLOR SKIN CSS -->
 		<link id="theme" rel="stylesheet" type="text/css" media="all" href="/assets/colors/color1.css" />
 
@@ -330,9 +330,9 @@
 		 <!-- SELECT2 JS -->
 		 <script src="/assets/plugins/select2/select2.full.min.js"></script>
 
-
 		<!-- CUSTOM JS-->
 		<script src="/assets/js/custom.js"></script>
+        @yield('customJS')
 
 	</body>
 
