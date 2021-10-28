@@ -1,59 +1,56 @@
 @extends('layouts._layouts')
 
+@section('title','Ana Sayfa')
+
 @section('content')
 
 <div class="container">
 
     <!-- PAGE-HEADER -->
     <div class="page-header">
-        <ol class="breadcrumb"><!-- breadcrumb -->
-            <li class="breadcrumb-item"><a href="#">Pages</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Empty Page</li>
-        </ol><!-- End breadcrumb -->
+
 
     </div>
     <!-- PAGE-HEADER END -->
 
     <!-- ROW-1 OPEN -->
     <div class="row">
-
-
-
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@if (Auth::user()->roleId==3)
 
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header">Hoşgeldiniz {{ Auth::user()->name }} </div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+                    <p class="lead m-0">Sistemimizde Arızalı Ürünlerinizi Ekleyebilir Veya Eklediğiniz Ürünlerinizin Son Durumlarını Görebilirsiniz </p>
 
-                    {{ __('You are logged in!') }}
                 </div>
             </div>
         </div>
     </div>
 </div>
+@else
+{{-- bu alana charts gibi şeyler eklenecek son zamanlarda biten ürünler veya yeni gelenler gibi --}}
+
+@endif
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @endsection

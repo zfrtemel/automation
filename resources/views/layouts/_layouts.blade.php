@@ -78,24 +78,7 @@
 							</div>
 							<a class="animated-arrow hor-toggle horizontal-navtoggle"><span></span></a>
 							<div class="d-flex  ml-auto header-right-icons">
-								<div class="d-sm-flex">
-									<a href="#" class="nav-link icon search-btn">
-										<i class="fe fe-search"></i>
-									</a>
-									<div class="search-area">
-										<div class="close-btn pull-right"><button class="btn"><i class="fe fe-x"></i></button></div>
-										<form>
-											<div class="row">
-												<div class="input-group form-btn">
-													<div class="input-group-append">
-														<button class="btn" type="button"><i class="fa fa-search"></i></button>
-													</div>
-													<input type="text" class="form-control" placeholder="Search here..." aria-label="Recipient's username" aria-describedby="button-addon2">
-												</div>
-											</div>
-										</form>
-									</div>
-								</div><!-- SEARCH -->
+
 								<div class="dropdown d-md-flex">
 									<a class="nav-link icon full-screen-link nav-link-bg">
 										<i class="fe fe-minimize fullscreen-button"></i>
@@ -139,54 +122,7 @@
 										<a href="#" class="dropdown-item text-center">View all Notification</a>
 									</div>
 								</div><!-- NOTIFICATIONS -->
-								<div class="dropdown d-md-flex message">
-									<a class="nav-link icon text-center" data-toggle="dropdown">
-										<i class="fe fe-mail"></i>
-										<span class="nav-unread badge badge-danger badge-pill">3</span>
-									</a>
-									<div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-										<div class="message-menu">
-											<a class="dropdown-item d-flex pb-3" href="#">
-												<span class="avatar avatar-md brround mr-3 align-self-center cover-image" data-image-src="/assets/images/users/1.jpg"></span>
-												<div>
-													<strong>Madeleine</strong> Hey! there I' am available....
-													<div class="small text-muted">
-														3 hours ago
-													</div>
-												</div>
-											</a>
-											<a class="dropdown-item d-flex pb-3" href="#">
-												<span class="avatar avatar-md brround mr-3 align-self-center cover-image" data-image-src="/assets/images/users/12.jpg"></span>
-												<div>
-													<strong>Anthony</strong> New product Launching...
-													<div class="small text-muted">
-														5 hour ago
-													</div>
-												</div>
-											</a>
-											<a class="dropdown-item d-flex pb-3" href="#">
-												<span class="avatar avatar-md brround mr-3 align-self-center cover-image" data-image-src="/assets/images/users/4.jpg"></span>
-												<div>
-													<strong>Olivia</strong> New Schedule Realease......
-													<div class="small text-muted">
-														45 mintues ago
-													</div>
-												</div>
-											</a>
-											<a class="dropdown-item d-flex pb-3" href="#">
-												<span class="avatar avatar-md brround mr-3 align-self-center cover-image" data-image-src="/assets/images/users/15.jpg"></span>
-												<div>
-													<strong>Sanderson</strong> New Schedule Realease......
-													<div class="small text-muted">
-														2 days ago
-													</div>
-												</div>
-											</a>
-										</div>
-										<div class="dropdown-divider"></div>
-										<a href="#" class="dropdown-item text-center">See all Messages</a>
-									</div>
-								</div><!-- MESSAGE-BOX -->
+
 								<div class="dropdown profile-1">
 									<a href="#" data-toggle="dropdown" class="nav-link pr-2 leading-none d-flex">
 										<span>
@@ -197,7 +133,7 @@
 										<div class="drop-heading">
 											<div class="text-center">
 												<h5 class="text-dark mb-0">   {{ Auth::user()->name }}</h5>
-												<small class="text-muted">  {{ Auth::user()->roleId }}</small>
+												<small class="text-muted">  {{ Auth::user()->roleId===3 ?'kullanıcı' :  'Yetkili' }}</small>
 											</div>
 										</div>
 										<div class="dropdown-divider m-0"></div>
@@ -218,11 +154,7 @@
 
 									</div>
 								</div>
-								<div class="dropdown d-md-flex header-settings">
-									<a href="#" class="nav-link icon " data-toggle="sidebar-right" data-target=".sidebar-right">
-										<i class="fe fe-align-right"></i>
-									</a>
-								</div><!-- SIDE-MENU -->
+
 							</div>
 						</div>
 					</div>
@@ -232,6 +164,9 @@
 				<!--/Horizontal-main -->
 @if ( Auth::user()->roleId==3)
 @include('menus.user_menu')
+@elseif ( Auth::user()->roleId==2)
+@include('menus.user_menu')
+
 @else
 @include('menus.service_menu')
 
@@ -264,37 +199,23 @@
 										<div class="drop-heading">
 											<div class="text-center">
 												<h5 class="text-dark mb-0">  {{ Auth::user()->name }}</h5>
-												<small class="text-muted">Administrator</small>
+												<small class="text-muted">{{ Auth::user()->roleId===3 ?'kullanıcı' :  'Yetkili' }}</small>
 											</div>
 										</div>
 										<div class="dropdown-divider m-0"></div>
-										<a class="dropdown-item" href="#">
-											<i class="dropdown-icon mdi mdi-account-outline"></i> Profile
-										</a>
-										<a class="dropdown-item" href="#">
-											<i class="dropdown-icon  mdi mdi-settings"></i> Settings
-										</a>
-										<a class="dropdown-item" href="#">
-											<span class="float-right"></span>
-											<i class="dropdown-icon mdi  mdi-message-outline"></i> Inbox
-										</a>
-										<a class="dropdown-item" href="#">
-											<i class="dropdown-icon mdi mdi-comment-check-outline"></i> Message
-										</a>
-										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="#">
-											<i class="dropdown-icon mdi mdi-compass-outline"></i> Need help?
-										</a>
-										<a class="dropdown-item" href="login.html">
-											<i class="dropdown-icon mdi  mdi-logout-variant"></i> Sign out
-										</a>
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                      document.getElementById('logout-form').submit();">
+                                      <i class="dropdown-icon mdi  mdi-logout-variant"></i>    {{ __('Çıkış Yap') }}
+                                     </a>
+
+                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                         @csrf
+                                     </form>
+
 									</div>
 								</div>
-								<div class="dropdown d-md-flex header-settings">
-									<a href="#" class="nav-link icon " data-toggle="sidebar-right" data-target=".sidebar-right">
-										<i class="fe fe-align-right"></i>
-									</a>
-								</div><!-- SIDE-MENU -->
+
 							</div>
 						</div>
 					</div>
@@ -302,24 +223,7 @@
 				<div class="mb-1 navbar navbar-expand-lg  responsive-navbar navbar-dark d-md-none bg-white">
 					<div class="collapse navbar-collapse" id="navbarSupportedContent-4">
 						<div class="d-flex order-lg-2 ml-auto">
-							<div class="d-sm-flex">
-								<a href="#" class="nav-link icon search-btn">
-									<i class="fe fe-search"></i>
-								</a>
-								<div class="search-area">
-									<div class="close-btn pull-right"><button class="btn"><i class="fe fe-x"></i></button></div>
-									<form>
-										<div class="row">
-											<div class="input-group form-btn">
-												<div class="input-group-append">
-													<button class="btn" type="button"><i class="fa fa-search"></i></button>
-												</div>
-												<input type="text" class="form-control" placeholder="Search here..." aria-label="Recipient's username" aria-describedby="button-addon2">
-											</div>
-										</div>
-									</form>
-								</div>
-							</div><!-- SEARCH -->
+
 							<div class="dropdown d-md-flex">
 								<a class="nav-link icon full-screen-link nav-link-bg">
 									<i class="fe fe-maximize fullscreen-button"></i>
@@ -360,53 +264,7 @@
 									<a href="#" class="dropdown-item text-center">View all Notification</a>
 								</div>
 							</div><!-- NOTIFICATIONS -->
-							<div class="dropdown d-md-flex message">
-								<a class="nav-link icon text-center" data-toggle="dropdown">
-									<i class="fe fe-mail"></i>
-								</a>
-								<div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-									<div class="message-menu">
-										<a class="dropdown-item d-flex pb-3" href="#">
-											<span class="avatar avatar-md brround mr-3 align-self-center cover-image" data-image-src="/assets/images/users/1.jpg"></span>
-											<div>
-												<strong>Madeleine</strong> Hey! there I' am available....
-												<div class="small text-muted">
-													3 hours ago
-												</div>
-											</div>
-										</a>
-										<a class="dropdown-item d-flex pb-3" href="#">
-											<span class="avatar avatar-md brround mr-3 align-self-center cover-image" data-image-src="/assets/images/users/12.jpg"></span>
-											<div>
-												<strong>Anthony</strong> New product Launching...
-												<div class="small text-muted">
-													5 hour ago
-												</div>
-											</div>
-										</a>
-										<a class="dropdown-item d-flex pb-3" href="#">
-											<span class="avatar avatar-md brround mr-3 align-self-center cover-image" data-image-src="/assets/images/users/4.jpg"></span>
-											<div>
-												<strong>Olivia</strong> New Schedule Realease......
-												<div class="small text-muted">
-													45 mintues ago
-												</div>
-											</div>
-										</a>
-										<a class="dropdown-item d-flex pb-3" href="#">
-											<span class="avatar avatar-md brround mr-3 align-self-center cover-image" data-image-src="/assets/images/users/15.jpg"></span>
-											<div>
-												<strong>Sanderson</strong> New Schedule Realease......
-												<div class="small text-muted">
-													2 days ago
-												</div>
-											</div>
-										</a>
-									</div>
-									<div class="dropdown-divider"></div>
-									<a href="#" class="dropdown-item text-center">See all Messages</a>
-								</div>
-							</div><!-- MESSAGE-BOX -->
+
 						</div>
 					</div>
 				</div>
@@ -419,66 +277,6 @@
 				</div>
 			</div>
 
-			<!-- SIDE-BAR -->
-			<div class="sidebar sidebar-right sidebar-animate">
-				<div class="p-4 border-bottom">
-			        <span class="fs-17">Profile Settings</span>
-					<a href="#" class="sidebar-icon text-right float-right" data-toggle="sidebar-right" data-target=".sidebar-right"><i class="fe fe-x"></i></a>
-				</div>
-			   <div class="card-body p-0">
-					<div class="header-user text-center mt-4 pb-4">
-						<span class="avatar avatar-xxl brround"><img src="/assets/images/users/15.jpg" alt="Profile-img" class="avatar avatar-xxl brround"></span>
-						<div class="dropdown-item text-center font-weight-semibold user h3 mb-0 p-0 mt-3">  {{ Auth::user()->name }}</div>
-						<small>Administrator</small>
-						<div class="card-body">
-							<div class="form-group ">
-								<label class="form-label  text-left">Offline/Online</label>
-								<select class="form-control select2 " data-placeholder="Choose one">
-									<option label="Choose one">
-									</option>
-									<option value="1">Online</option>
-									<option value="2">Offline</option>
-								</select>
-							</div>
-							<div class="form-group ">
-								<label class="form-label text-left">Website</label>
-								<select class="form-control select2 " data-placeholder="Choose one">
-									<option label="Choose one">
-									</option>
-									<option value="1">Spruko.com</option>
-									<option value="2">sprukosoft.com</option>
-									<option value="3">sprukotechnologies.com</option>
-									<option value="4">sprukoinfo.com</option>
-									<option value="5">sprukotech.com</option>
-								</select>
-							</div>
-						</div>
-					</div>
-					<a class="dropdown-item  border-top" href="#">
-						<i class="dropdown-icon mdi mdi-account-outline "></i> Spruko technologies
-					</a>
-					<a class="dropdown-item border-top" href="#">
-						<i class="dropdown-icon  mdi mdi-account-plus"></i> Add another Account
-					</a>
-					<div class="card-body border-top">
-						<div class="row">
-							<div class="col-4 text-center">
-								<a class="" href="#"><i class="dropdown-icon mdi  mdi-message-outline fs-30 m-0 leading-tight"></i></a>
-								<div>Inbox</div>
-							</div>
-							<div class="col-4 text-center">
-								<a class="" href="#"><i class="dropdown-icon mdi mdi-tune fs-30 m-0 leading-tight"></i></a>
-								<div>Settings</div>
-							</div>
-							<div class="col-4 text-center">
-								<a class="" href="#"><i class="dropdown-icon mdi mdi-logout-variant fs-30 m-0 leading-tight"></i></a>
-								<div>Sign out</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- SIDE-BAR CLOSED -->
 
 			<!-- FOOTER -->
 			<footer class="footer">

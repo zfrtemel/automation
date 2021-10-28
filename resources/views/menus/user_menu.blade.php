@@ -4,11 +4,10 @@
 							<!--Nav-->
 							<nav class="horizontalMenu clearfix">
 								<ul class="horizontalMenu-list">
-									<li aria-haspopup="true"><a href="index.html" class="sub-icon"><i class="fe fe-airplay"></i> Ana Sayfa</a></li>
-									<li aria-haspopup="true"><a href="#" class=""><i class="fe fe-layers"></i> Ürünler</a></li>
-									<li aria-haspopup="true"><a href="#" class=""><i class="fe fe-layers"></i> Üyeler</a></li>
-									<li aria-haspopup="true"><a href="#" class=""><i class="fe fe-layers"></i> Tamamlananlar</a></li>
-									<li aria-haspopup="true"><a href="#" class=""><i class="fe fe-layers"></i> Aktif Ürünler</a></li>
+									<li aria-haspopup="true"><a href="{{ route('home') }}" class=""><i class="fe fe-airplay"></i> Ana Sayfa</a></li>
+									<li aria-haspopup="true"><a href="#" class=""><i class="fe fe-shopping-bag"></i> Ürünler</a></li>
+									<li aria-haspopup="true"><a href="{{ route('urunekle') }}" class=""><i class="fe fe-save"></i> Ürün Ekle</a></li>
+									<li aria-haspopup="true"><a href="#" class=""><i class="fe fe-align-justify"></i> Aktif Ürünler</a></li>
 
 								</ul>
 							</nav>
@@ -16,3 +15,4 @@
 						</div>
 					</div>
 				</div>
+{{-- bu alan normal kullanıcıların göreceği alandır --}}
