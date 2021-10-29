@@ -42,7 +42,6 @@
                                     <tbody>
                                         @foreach ($orderList as $order)
 
-
                                         <tr>
 
                                             <td>{{ $order->name }}</td>
@@ -53,7 +52,7 @@
                                             <td>
                                                 <a data-id="{{ $order->id }}"  class="btn btn-icon btn-order-delete  btn-warning"><i class="fe fe-trash"></i></a>
 
-                                                <a  class="btn btn-icon  btn-info"><i class="fe fe-copy"></i></a>
+                                                <a href="{{ route('orderDetails',['id'=>$order->id]) }}" class="btn btn-icon  btn-info"><i class="fe fe-copy"></i></a>
                                             </td>
 
                                         </tr>

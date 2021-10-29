@@ -8,6 +8,7 @@ use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Order;
 use App\Models\Fault;
+use App\Models\OrderDetail;
 
 class UserController extends Controller
 {
@@ -39,12 +40,13 @@ class UserController extends Controller
             'faultId'=>$request->faultId,
             'customerNote'=>$request->customerNote,
         ]);
+
         if ($createOrder) {
 
-            return response()->Json(['durum'=>'1'],200);
+            return response()->Json(['durum'=>'1','donenId'=>$createOrder->id],200);
         }
         else {
-            return response()->Json(['durum'=>'2'],200);
+            return response()->Json(['durum'=>'hata'],200);
         }
 
     }
@@ -65,8 +67,19 @@ class UserController extends Controller
         } catch (Throwable $error) {
             return response()->Json(['durum'=>$error],200);
         }
+    }
 
+    public function details ($id)
+    {
+    $orders=Order::
+        where('userId',Auth::user()->id)
+            ->where('id',$id)
+                ->with('status','category','fault','ordersDetails')
+                    ->first();
+    $details=OrderDetail::where('orderId',$orders->id)->get();
 
+    return view('User.user_order_details',compact('orders'),compact('details'));
 
     }
+
 }

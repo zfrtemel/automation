@@ -115,7 +115,8 @@
                                 showConfirmButton: false,
                                 timer: 1000,
                                 willClose: () => {
-                                    window.location.href = "{{ route('home') }}";
+                                    var url = "{{route('orderDetails', '')}}"+"/"+result['donenId'];
+                                    window.location.href = url;
                                 }
                             })
                         } else {

@@ -13,6 +13,7 @@ Route::group(['namespace' => 'User'], function () {
     Route::post('/urun/ekle/post', 'UserController@eklePost')->name('urunekle');
     Route::get('/urun/list', 'UserController@List')->name('list');
     Route::post('/urun/deleted', 'UserController@delete')->name('deleteUser');
+    Route::get('/urun/details/{id}', 'UserController@details')->name('orderDetails');
 
 });
 
