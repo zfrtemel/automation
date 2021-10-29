@@ -11,6 +11,7 @@ Route::group(['namespace' => 'User'], function () {
     Route::get('/', 'UserController@index')->name('home');
     Route::get('/urun/ekle', 'UserController@ekleview')->name('ekleView');
     Route::post('/urun/ekle/post', 'UserController@eklePost')->name('urunekle');
+    Route::get('/urun/list', 'UserController@List')->name('list');
 
 });
 

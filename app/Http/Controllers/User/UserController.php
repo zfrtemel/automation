@@ -11,7 +11,6 @@ use App\Models\Fault;
 
 class UserController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('user');
@@ -47,6 +46,12 @@ class UserController extends Controller
         else {
             return response()->Json(['durum'=>'hatalı'],200);
         }
+
+    }
+    public function List ()
+    {
+    $orderList=Order::where('userId',Auth::user()->id)->get();
+    return view('User.orderList',compact('orderList'));
 
     }
 }
