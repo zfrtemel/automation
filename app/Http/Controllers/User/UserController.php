@@ -44,14 +44,29 @@ class UserController extends Controller
             return response()->Json(['durum'=>'1'],200);
         }
         else {
-            return response()->Json(['durum'=>'hatalı'],200);
+            return response()->Json(['durum'=>'2'],200);
         }
 
     }
     public function List ()
     {
-    $orderList=Order::where('userId',Auth::user()->id)->get();
+    $orderList=Order::
+        where('userId',Auth::user()->id)
+            ->with('status','category','fault')
+                ->get();
     return view('User.orderList',compact('orderList'));
+
+    }
+    public function delete (Request $request)
+    {
+        try {
+            Order::where('id',$request->id)->delete();
+            return response()->Json(['durum'=>'1'],200);
+        } catch (Throwable $error) {
+            return response()->Json(['durum'=>$error],200);
+        }
+
+
 
     }
 }

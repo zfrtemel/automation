@@ -107,7 +107,7 @@
                     data: JSON.stringify(data),
                     dataType: 'json',
                     success: function(result) {
-                        if (result == '1') {
+                        if (result['durum'] == '1') {
                             Swal.fire({
                                 position: 'top-end',
                                 icon: 'success',
