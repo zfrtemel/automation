@@ -30,6 +30,7 @@ class CreateOrdersTable extends Migration
             $table->foreign('faultId')->references('id')->on('faults')->onDelete('cascade');
 
             $table->text('customerNote')->nullable();
+            $table->integer('isRead')->nullable()->default('0');
 
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
