@@ -18,13 +18,20 @@ class UserRole
     public function handle(Request $request, Closure $next)
     {
 
-        if (isset(Auth::user()->roleId) != null) {
-            if (Auth::user()->roleId == 3) {
+        if (isset(Auth::user()->roleId) != null)
+        {
+            if (Auth::user()->roleId == 3)
+            {
                 return $next($request);
-            } else {
-                return redirect('/login');
             }
-        } else {
+            else
+            {
+                return redirect('/yetkisiz-giris');
+            }
+            dd(Auth::user());
+        }
+        else
+        {
 
             return redirect('/login');
         }

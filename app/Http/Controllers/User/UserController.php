@@ -8,18 +8,16 @@ use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Order;
 use App\Models\Fault;
+use App\Http\Middleware\UserRole;
 use App\Models\OrderDetail;
 
 class UserController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('user');
-    }
+
 
     public function index ()
     {
-    return view('home');
+    return view('User.home');
 
     }
     public function ekleview ()

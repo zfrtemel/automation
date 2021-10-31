@@ -126,8 +126,6 @@
 				<!--/Horizontal-main -->
 @if ( Auth::user()->roleId==3)
 @include('menus.user_menu')
-@elseif ( Auth::user()->roleId==2)
-@include('menus.user_menu')
 
 @else
 @include('menus.service_menu')

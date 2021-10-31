@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ServiceRole
 {
@@ -16,13 +17,17 @@ class ServiceRole
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user()->user_type == '1'&&Auth::user()->user_type == '2' )
+       if (isset(Auth::user()->roleId) != null) {
+            if (Auth::user()->roleId == 2 ) {
+                return $next($request);
+            } else
+            {
+                return redirect('/yetkisiz-giris');
+            }
+        } else
         {
-            return $next($request);
-        }
-        else
-        {
-        return redirect('/login');
+
+            return redirect('/login');
         }
     }
 }

@@ -6,17 +6,12 @@
 
 <div class="container">
 
-    <!-- PAGE-HEADER -->
-    <div class="page-header">
 
-
-    </div>
     <!-- PAGE-HEADER END -->
 
     <!-- ROW-1 OPEN -->
     <div class="row">
 @if (Auth::user()->roleId==3)
-
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
