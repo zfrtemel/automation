@@ -59,6 +59,16 @@ class UserController extends Controller
     return view('User.orderList',compact('orderList'));
 
     }
+    public function activateList ()
+    {
+    $orderList=Order::
+        where('userId',Auth::user()->id)
+        ->where('statusId','!=',6)
+            ->with('status','category','fault')
+                ->get();
+    return view('User.orderList',compact('orderList'));
+
+    }
     public function delete (Request $request)
     {
         try {
@@ -77,9 +87,14 @@ class UserController extends Controller
                 ->with('status','category','fault','ordersDetails')
                     ->first();
     $details=OrderDetail::where('orderId',$orders->id)->get();
+    foreach ($details as $key => $value) {//bu kod ile bildirim üzerinden de gelse normal şekilde de girse bildirimi okunmuş sayacak
 
+        OrderDetail::where('orderId',$orders->id)->update(['isRead'=>1]);
+    }
     return view('User.user_order_details',compact('orders'),compact('details'));
 
     }
+
+
 
 }

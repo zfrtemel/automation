@@ -14,6 +14,7 @@ Route::group(['namespace' => 'User'], function () {
     Route::get('/urun/list', 'UserController@List')->name('list');
     Route::post('/urun/deleted', 'UserController@delete')->name('deleteUser');
     Route::get('/urun/details/{id}', 'UserController@details')->name('orderDetails');
+    Route::get('/urun/list/Aktif', 'UserController@activateList')->name('activateList');
 
 });
 

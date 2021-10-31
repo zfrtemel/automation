@@ -27,6 +27,7 @@ class CreateOrderDetailsTable extends Migration
             //birden fazla kere işlem yapılabileceği için bu alan ilişkili olarak ayrıldı,
             //teslim alındı
             //temizlik yapıldı vs vs böylelikle müşteri ürününde yapılan işlemleri görebilir
+            $table->integer('isRead')->nullable()->default('0');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });

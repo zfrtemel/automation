@@ -84,45 +84,7 @@
 										<i class="fe fe-minimize fullscreen-button"></i>
 									</a>
 								</div><!-- FULL-SCREEN -->
-								<div class="dropdown d-md-flex notifications">
-									<a class="nav-link icon" data-toggle="dropdown">
-										<i class="fe fe-bell"></i>
-										<span class="nav-unread badge badge-success badge-pill">2</span>
-									</a>
-									<div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-										<a href="#" class="dropdown-item text-center">Notifications</a>
-										<div class="dropdown-divider"></div>
-										<div class="notifications-menu">
-											<a class="dropdown-item d-flex pb-3" href="#">
-												<div class="fs-16 text-primary mr-3">
-													<i class="fa fa-thumbs-o-up"></i>
-												</div>
-												<div class="">
-													<strong>Event today</strong>
-												</div>
-											</a>
-											<a class="dropdown-item d-flex pb-3" href="#">
-												<div class="fs-16 text-primary mr-3">
-													<i class="fa fa-commenting-o"></i>
-												</div>
-												<div class="">
-													<strong>Settings</strong>
-												</div>
-											</a>
-											<a class="dropdown-item d-flex pb-3" href="#">
-												<div class="fs-16 text-danger mr-3">
-													<i class="fa fa-cogs"></i>
-												</div>
-												<div class="">
-													<strong>Your Admin Lanuch</strong>
-												</div>
-											</a>
-										</div>
-										<div class="dropdown-divider"></div>
-										<a href="#" class="dropdown-item text-center">View all Notification</a>
-									</div>
-								</div><!-- NOTIFICATIONS -->
-
+<x-bildirim/>
 								<div class="dropdown profile-1">
 									<a href="#" data-toggle="dropdown" class="nav-link pr-2 leading-none d-flex">
 										<span>

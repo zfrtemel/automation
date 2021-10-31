@@ -75,11 +75,11 @@
 
 @section('customJS')
     <!-- DATA TABLE JS-->
-    <script src="../../assets/plugins/datatable/jquery.dataTables.min.js"></script>
-    <script src="../../assets/plugins/datatable/dataTables.bootstrap4.min.js"></script>
-    <script src="../../assets/plugins/datatable/datatable.js"></script>
-    <script src="../../assets/plugins/datatable/datatable-2.js"></script>
-    <script src="../../assets/plugins/datatable/dataTables.responsive.min.js"></script>
+    <script src="/assets/plugins/datatable/jquery.dataTables.min.js"></script>
+    <script src="/assets/plugins/datatable/dataTables.bootstrap4.min.js"></script>
+    <script src="/assets/plugins/datatable/datatable.js"></script>
+    <script src="/assets/plugins/datatable/datatable-2.js"></script>
+    <script src="/assets/plugins/datatable/dataTables.responsive.min.js"></script>
 
 <script src="/assets/js/sweetalert.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
