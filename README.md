@@ -7,6 +7,19 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+
+## Kurulumu
+
+- İlk olarak .env.example dosyasını yeniden adlandırın ve adını .env haline getirin dosya içerisinde dbname alanını database üzerinde kullanmak istediğiniz table ismini giriniz(default olarak automation'dur) 
+- Projeyi açtıktan sonra komut satırına 'composer install' kodunu giriyoruz proje içerisindeki gerekli olan dosyaları indirecektir
+- İndirme işlemi bittikten sonra yine komut satırına ilk 'npm install' ardından 'npm run dev' kodlarını yazıyoruz
+- Son olarak laravelin key üretmesi için şu kodu girmemiz gerekmekte 'php artisan key:generate'
+- Bu işlemlerden sonra projemiz için her şey indirilmiş olacaktır ama son yapılması gereken 2 işlem mevcut bu işlemler migration ile hazırlanan tablolarımızı database içerisinde oluşturmak bunun içinde ilk 'php artisan migrate' kodunu terminale girip tabloları oluşturuyoruz daha sonra da 'php artisan db:seed' kodumuz ile örnek verilerimizi içeri aktarıyoruz
+- Artık php artisan serve komutumuzu yazarak projemizi başlatabiliriz
+
+
+
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
