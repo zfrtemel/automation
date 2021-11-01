@@ -22,11 +22,10 @@ class YetkiliController extends Controller
         $finishOrders=count(Order::where('created_at','>=',Carbon::now()->subDays(30))->where('statusId',6)->get());
         $userOrder=count(Order::where('created_at','>=',Carbon::now()->subDays(30))->where('userId',Auth::user()->id)->where('statusId',6)->get());
         $weekOrder=count(Order::where('created_at','>=',Carbon::now()->subDays(7))->get());
+
         return view('Service.index'
             ,compact('orderList')
-            ,compact('weekOrder')
-            ,compact('userOrder')
-            ,compact('finishOrders'));
+            ,compact('weekOrder'))->with('finishOrders',$finishOrders)->with('userOrder',$userOrder);
     }
     public function orderALL(){
         $orderList=Order::with('status','category','fault')->get();
@@ -34,7 +33,7 @@ class YetkiliController extends Controller
     }
     public function finishList(){
         $orderList=Order::where('statusId',6)->with('status','category','fault')->get();
-    return view('Service.orderList',compact('orderList'));
+        return view('Service.orderList',compact('orderList'));
     }
     public function activateOrder(){
         $orderList=Order::where('statusId','!=',6)->with('status','category','fault')->get();
@@ -77,6 +76,13 @@ $data=1;
 
         }
 
+    }
+
+
+    public function delete ($id)
+    {
+        Order::where('id',$id)->delete();
+        return redirect()->back();
     }
 
 }

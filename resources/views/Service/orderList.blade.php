@@ -47,7 +47,7 @@
                                         <td>@include('partial.details',['name'=>$order->fault->name,'color'=>$order->fault->colorName])</td>
                                         {{-- bu alanda partial'a gerek yok ama partialviewe veri gönderimini görmek için kullandım --}}
                                         <td>
-                                            <a data-id="{{ $order->id }}"  class="btn btn-icon btn-order-delete  btn-warning"><i class="fe fe-trash"></i></a>
+                                            <a href="{{ route('AdminDelete',['id'=>$order->id]) }}" class="btn btn-icon btn-order-delete  btn-warning"><i class="fe fe-trash"></i></a>
 
                                             <a href="{{ route('details',['id'=>$order->id]) }}" class="btn btn-icon  btn-info"><i class="fe fe-copy"></i></a>
                                         </td>

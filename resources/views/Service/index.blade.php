@@ -34,11 +34,8 @@
                     <div class="d-flex">
                         <div class="text-white">
                             <h2 class="mb-0 number-font">
-@if (isset($finishOrders)!=0)
 {{ $finishOrders }}
-@else
-0
-@endif
+
                                 </h2>
                             <p class="text-white mb-0">Son 30 Günde Tamamlananlar</p>
                         </div>
@@ -56,11 +53,7 @@
                     <div class="d-flex">
                         <div class="text-white">
                             <h2 class="mb-0 number-font">
-                                @if (isset($userOrder)!=0)
 {{ $userOrder }}
-@else
-0
-@endif
 
                             </h2>
                             <p class="text-white mb-0">Son 7 Günde Tamamladıklarınız</p>
@@ -78,11 +71,7 @@
                     <div class="d-flex">
                         <div class="text-white">
                             <h2 class="mb-0 number-font">
-                                @if (isset($weekOrder)!=0)
                                 {{ $weekOrder }}
-                                @else
-                                0
-                                @endif
 
                             </h2>
                             <p class="text-white mb-0">Son 7 Günde Gelen Ürün Sayısı</p>
