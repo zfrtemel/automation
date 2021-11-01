@@ -26,6 +26,11 @@ Route::middleware([ServiceRole::class])->group(function () {
 
     Route::group(['namespace' => 'Service'], function () {
         Route::get('/admin', 'YetkiliController@index')->name('adminHome');
+        Route::get('/admin/urunler', 'YetkiliController@orderALL')->name('urunListAll');
+        Route::get('/admin/tamamlananlar', 'YetkiliController@finishList')->name('tamamlanan');
+        Route::get('/admin/urunler/aktif', 'YetkiliController@activateOrder')->name('aktifUrun');
+        Route::get('/admin/details/{id}', 'YetkiliController@details')->name('details');
+        Route::post('/admin/islem/ekle', 'YetkiliController@islemEkle')->name('ekleIslem');
     });
 });
 

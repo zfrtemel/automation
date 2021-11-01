@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class OrderDetail extends Model
 {
     use HasFactory;
-
+    protected $fillable=['processNote','orderId','userId'];
 /**
  * Get the order associated with the OrderDetail
  *

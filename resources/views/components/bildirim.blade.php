@@ -7,18 +7,35 @@
         <a href="#" class="dropdown-item text-center">Bildirim</a>
         <div class="dropdown-divider"></div>
         <div class="notifications-menu">
-@foreach ($bildirim as $items )
+            @if ($type == 1)
 
-            <a class="dropdown-item d-flex pb-3 urun-bildirim" data-id="{{ $items->order->id }}" href="{{ route('orderDetails',['id'=>$items->order->id]) }}">
-                <div class="fs-16 text-danger mr-3">
-                    <i class="fe fe-alert-circle"></i>
-                </div>
-                <div class="">
-                    <strong>{{ $items->order->name }} Adlı Ürün İle İlgili Bir Bildiriminiz Mevcut</strong>
-                </div>
-            </a>
-            @endforeach
 
+                @foreach ($bildirim as $items)
+
+                    <a class="dropdown-item d-flex pb-3 urun-bildirim" data-id="{{ $items->order->id }}"
+                        href="{{ route('orderDetails', ['id' => $items->order->id]) }}">
+                        <div class="fs-16 text-danger mr-3">
+                            <i class="fe fe-alert-circle"></i>
+                        </div>
+                        <div class="">
+                            <strong>{{ $items->order->name }} Adlı Ürün İle İlgili Bir Bildiriminiz Mevcut</strong>
+                        </div>
+                    </a>
+                @endforeach
+            @else
+                @foreach ($bildirim as $items)
+
+                    <a class="dropdown-item d-flex pb-3 urun-bildirim" data-id="{{ $items->id }}"
+                        href="{{ route('details', ['id' => $items->id]) }}">
+                        <div class="fs-16 text-danger mr-3">
+                            <i class="fe fe-alert-circle"></i>
+                        </div>
+                        <div class="">
+                            <strong>{{ $items->name }} Adlı Ürün İle İlgili Bir Bildiriminiz Mevcut</strong>
+                        </div>
+                    </a>
+                @endforeach
+            @endif
 
         </div>
 
