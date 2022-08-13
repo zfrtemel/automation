@@ -17,13 +17,14 @@ class AdminRole
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user()->user_type == '4')
-        {
-            return $next($request);
-        }
-        else
-        {
-        return redirect('/login');
-        }
+        return $next($request);
+        // if (Auth::user()->user_type == '3')
+        // {
+
+        // }
+        // else
+        // {
+        // return redirect('/login');
+        // }
     }
 }

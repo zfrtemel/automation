@@ -22,7 +22,7 @@ class ServiceRole
                 return $next($request);
             } else
             {
-                return redirect('/yetkisiz-giris');
+                return redirect('/admin');
             }
         } else
         {

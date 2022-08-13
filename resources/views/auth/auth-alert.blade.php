@@ -39,7 +39,7 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
         {
             window.setTimeout(function() {
                 window.location.href = '/admin';
-            }, 5000);
+            });
 
         }
 
